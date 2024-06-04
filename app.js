@@ -1256,18 +1256,21 @@ class Mouse {
     this.canvas.height = height;
   }
 }
+
 // Get random number from range
 function getRandomRange(min, max) {
   return Math.random() * (max - min) + min;
 }
+
 // Instantiate objects **************************************************************************************************************
 const player = new Player(0.5, 0.5);
 const stars = new Stars();
 const coinSpawner = new CoinSpawner(player);
 const mouse = new Mouse(0, 0, 30);
 const userInterface = new UserInterface(player, coinSpawner);
+
 // MAIN FUNCTION **********************************************************************************************************************************
-function animate() {
+function main() {
   userInterface.update(player);
   player.update(mouse, userInterface, coinSpawner);
   stars.draw();
@@ -1276,6 +1279,6 @@ function animate() {
   }
   coinSpawner.draw();
   player.draw();
-  requestAnimationFrame(animate);
+  requestAnimationFrame(main);
 }
-animate();
+main();
